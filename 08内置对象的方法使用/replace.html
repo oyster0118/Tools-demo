@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var ha = "sssass";
+    while (ha.indexOf('ss') != -1) {
+        var ha = ha.replace("ss", "s")
+    }
+    console.log(ha); //sas
+
+    var str1 = "sssass";
+    str1 = str1.replace(/ss/g, "s");
+    console.log(str1); //ssas
+
+    /**
+     * 字符串替换
+     * @param  {string} str    要被替换的字符串
+     * @param  {string} substr 要替换的字符串
+     * @param  {string} newstr 用于替换的字符串
+     * @return {string}        替换后的新字符串
+     */
+    function myReplace(str, substr, newstr) {
+        var p = -1; // 字符出现位置
+        var s = 0; // 下一次起始位置
+
+        while ((p = str.indexOf(substr, s)) != -1) {
+            console.log(p + '----' + newstr.length);
+            s = p + newstr.length; // 位置 + 值的长度
+            console.log(s);
+            str = str.replace(substr, newstr);
+        }
+
+        return str;
+    }
+    console.log(myReplace("sssass", "ss", "s")); //sass
+
+    /**
+     * 字符串替换
+     * @param  {string} str    要被替换的字符串
+     * @param  {string} substr 要替换的字符串
+     * @param  {string} newstr 用于替换的字符串
+     * @return {string}        替换后的新字符串
+     */
+    function replace(str, substr, newstr) {
+        substr = substr.replace(/[.\\[\]{}()|^$?*+]/g, "\\$&"); // 转义字符串中的元字符
+        var re = new RegExp(substr, "g"); // 生成正则
+        return str.replace(re, newstr);
+    }
+
+    console.log(replace("sssass", "ss", "s")); // ssas
+</script>
+
+</html>
