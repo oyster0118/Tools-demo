@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function setCookie(key, value) {
+            document.cookie = key + '=' + encodeURIComponent(value);
+        }
+
+        function getCookie(key) {
+            // 约定, 传入的是 键名, 就将 cookie 的值对应的键值取出来
+            // 如果没有传入参数, 就将全局对象返回
+            var tmp = {};
+            document.cookie.split(';').map(v => v.trim())
+                .forEach(v => {
+                    var kv = v.split('=');
+                    tmp[kv[0]] = decodeURIComponent(kv[1]);
+                });
+            return key ? tmp[key] : tmp;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
